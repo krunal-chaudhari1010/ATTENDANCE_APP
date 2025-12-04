@@ -7,6 +7,7 @@ import * as Device from "expo-device";
 
 import { useEffect, useState } from "react";
 import {
+  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -14,6 +15,7 @@ import {
   Text,
   View,
 } from "react-native";
+import Attendance from "../Tabs/Attendance";
 import UserProfile from "../Tabs/UserProfile";
 
 const Dashboard = ({ navigation }) => {
@@ -56,38 +58,36 @@ const Dashboard = ({ navigation }) => {
       case "home":
         return (
           <View style={styles.contentContainer}>
-            <Text style={styles.tabTitle}>Welcome to Dashboard </Text>
-            <View style={styles.quickActionsContainer}>
-              <Pressable
-                style={styles.actionCard}
-                onPress={() => {
-                  setActiveTab("reports");
-                  navigation.navigate("AttendanceReport");
+            <View style={{ flexDirection: "row", gap: 12 }}>
+              <Image
+                source={require("../../assets/images/jcn logo.jpg")}
+                alt="Company_Logo"
+                style={{
+                  width: 50,
+                  height: 50,
+                  resizeMode: "contain",
+                  marginTop: 6,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "800",
+                  color: "#1e293b",
+                  marginBottom: 24,
+                  marginTop: 18,
                 }}
               >
-                <View style={styles.actionIcon}>
-                  <Ionicons
-                    name="newspaper-outline"
-                    size={32}
-                    color="#e88f41ff"
-                  />
-                </View>
-                <Text style={styles.actionText}>Attendance Report</Text>
-              </Pressable>
-
-              <Pressable
-                style={styles.actionCard}
-                onPress={() => {
-                  setActiveTab("reports");
-                  navigation.navigate("LeaveReport");
-                }}
-              >
-                <View style={styles.actionIcon}>
-                  <Octicons name="repo-pull" size={32} color="#e88f41ff" />
-                </View>
-                <Text style={styles.actionText}>Leave Report</Text>
-              </Pressable>
+                Welcome to JCN Technology Pvt. Ltd.
+              </Text>
             </View>
+
+            {/* <View style={styles.quickActionsContainer}> */}
+            <View>
+              <Attendance />
+              {/* <Leave /> */}
+            </View>
+            {/* </View> */}
           </View>
         );
       case "reports":
@@ -235,7 +235,7 @@ export default Dashboard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8fafc",
+    backgroundColor: "white",
     marginTop: 50,
   },
   scrollContent: {
@@ -252,11 +252,11 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     marginTop: 16,
   },
-  quickActionsContainer: {
-    flexDirection: "row",
-    gap: 12,
-    marginBottom: 24,
-  },
+  // quickActionsContainer: {
+  //   flexDirection: "row",
+  //   gap: 12,
+  //   marginBottom: 24,
+  // },
   actionCard: {
     flex: 1,
     backgroundColor: "white",

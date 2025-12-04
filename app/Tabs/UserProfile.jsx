@@ -150,8 +150,8 @@ const UserProfile = ({ user, logout }) => {
         <View style={styles.header}>
           <View style={styles.avatar}>
             <Text style={styles.avatarText}>
-              {data.Name.charAt(0).toUpperCase()}
-            </Text>
+              {data ? data?.Name?.charAt(0).toUpperCase() : data.Name}
+            </Text> 
           </View>
           <Text style={styles.userName}>{data.Name}</Text>
         </View>
